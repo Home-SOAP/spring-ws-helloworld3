@@ -24,3 +24,13 @@ A detailed step-by-step tutorial on how to implement an Apache Kafka Consumer an
 
 * `Контейнер Jboss Java EE и ExecutorService` http://blog.chris-ritchie.com/2013/10/managed-thread-factory-example-in-wildfly.html
   http://qaru.site/questions/226663/jboss-java-ee-container-and-an-executorservice
+
+---
+
+* `SOAP over JMS` https://docs.jboss.org/author/display/JBWS/SOAP+over+JMS
+* `JMETER VS SOAPUI` https://octoperf.com/blog/2018/06/05/jmeter-vs-soapui/
+
+
+
+* https://www.soapui.org/soap-mocking/service-mocking-overview.html
+* https://www.soapui.org/tutorials/soap-sample-project.html
