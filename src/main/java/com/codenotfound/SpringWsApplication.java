@@ -22,7 +22,7 @@ public class SpringWsApplication extends SpringBootServletInitializer implements
 
   @Override
   public void run(String... args) {
-    helloWorldClientServiceExecutor.sayHello("Alex");
+//    helloWorldClientServiceExecutor.sayHello("Alex"); //TODO: start ConsoleApplication
   }
 
 }
