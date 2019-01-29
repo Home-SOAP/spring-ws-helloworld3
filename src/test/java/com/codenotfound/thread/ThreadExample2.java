@@ -2,9 +2,10 @@ package com.codenotfound.thread;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import static com.codenotfound.thread.ThreadExample1.DF;
 
-public class ThreadExample1 {
+public class ThreadExample2 {
 
     static DateTimeFormatter DF = DateTimeFormatter.ofPattern("HH:mm:ss.SSS");
 
@@ -12,8 +13,8 @@ public class ThreadExample1 {
         Db db = new Db();
 
         System.out.println("   >>>>>>>>>>>> " + LocalDateTime.now().format(DF));
-        Thread threadFun1 = new Thread(new ThreadExample1().taskFun(1, db)); //TODO  first OR last
-        Thread threadFun2 = new Thread(new ThreadExample1().taskFun(2, db)); //TODO  first OR last
+        Thread threadFun1 = new Thread(new ThreadExample2().taskFun(1, db)); //TODO  first OR last
+        Thread threadFun2 = new Thread(new ThreadExample2().taskFun(2, db)); //TODO  first OR last
 
         threadFun2.start(); //TODO  first-start
         threadFun1.start(); //TODO  last-start
@@ -25,11 +26,9 @@ public class ThreadExample1 {
     }
 
     public Runnable taskFun(int number, Db db) {
-        return () -> new Worker1().fun(number, db);
+        return () -> fun(number, db);
     }
-}
 
-class Worker1 {
     void fun(int number, Db db) {
 //        synchronized (db) { //TODO  double time
         synchronized (this) { //TODO  once time
@@ -41,4 +40,5 @@ class Worker1 {
             System.out.println(number + ". " + LocalDateTime.now().format(DF));
         }
     }
+
 }
