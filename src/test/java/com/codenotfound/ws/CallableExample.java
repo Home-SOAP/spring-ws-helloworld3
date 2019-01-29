@@ -33,7 +33,7 @@ public class CallableExample {
 //        Random random = new Random();
 //        for (int i=0; i<4; i++) {
             Integer number = random.nextInt(10);
-            FactorialCalculator calculator  = new FactorialCalculator(number);
+            CalculatorCallable calculator  = new CalculatorCallable(number);
             Future<Integer> result = executor.submit(calculator);
             resultList.add(result);
 //        }
@@ -48,11 +48,11 @@ public class CallableExample {
     }
 }
 
-class FactorialCalculator implements Callable<Integer> {
+class CalculatorCallable implements Callable<Integer> {
 
     private Integer number;
 
-    public FactorialCalculator(Integer number) {
+    public CalculatorCallable(Integer number) {
         this.number = number;
     }
 
