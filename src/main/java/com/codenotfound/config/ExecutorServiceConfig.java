@@ -2,6 +2,8 @@ package com.codenotfound.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -10,6 +12,7 @@ import java.util.concurrent.Executors;
 public class ExecutorServiceConfig {
 
     @Bean("fixedThreadPool")
+    @Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS) //TODO:  выиграш в скорости на 3-секунды
     public ExecutorService fixedThreadPool() {
         return Executors.newFixedThreadPool(10);
     }
