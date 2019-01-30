@@ -31,7 +31,7 @@ public class ThreadServiceBean4Test {
 //    private ExecutorService executor;
 
     @Autowired
-    @Qualifier("newFixedThreadPool")
+//    @Qualifier("newFixedThreadPool")
     private ExecutorServiceUtil newFixedThreadPool;
 
     @Test
@@ -50,7 +50,10 @@ public class ThreadServiceBean4Test {
 //        futureServiceBean3.get();
 //        executor.shutdown();
 
-        newFixedThreadPool.submit(taskRun(), taskRun(), taskRun());
+//        newFixedThreadPool.submit(taskRun(), taskRun(), taskRun());
+        newFixedThreadPool.submit(taskRun());
+        newFixedThreadPool.submit(taskRun());
+        newFixedThreadPool.submit(taskRun());
         System.out.println("   <<<<<<<<<<<< " + LocalDateTime.now().format(DF)); //TODO  01:54:32.047 | 01:58:36.517
 
 //        executor.shutdown();

@@ -21,7 +21,7 @@ public class ThreadServiceBean4 {
 //    private ExecutorService executor; //TODO  + very fast time  + not 'java.lang.NullPointerException'
 
     @Autowired
-    @Qualifier("newFixedThreadPool")
+//    @Qualifier("newFixedThreadPool")
     private ExecutorServiceUtil newFixedThreadPool;
 
     public ThreadServiceBean4() {
