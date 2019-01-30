@@ -1,6 +1,6 @@
 package com.codenotfound.thread;
 
-import com.codenotfound.config.ExecutorUtil;
+import com.codenotfound.util.ExecutorServiceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -21,8 +21,8 @@ public class ThreadServiceBean4 {
 //    private ExecutorService executor; //TODO  + very fast time  + not 'java.lang.NullPointerException'
 
     @Autowired
-    @Qualifier("fixedThreadPoolUtil")
-    private ExecutorUtil executorUtil;
+    @Qualifier("newFixedThreadPool")
+    private ExecutorServiceUtil newFixedThreadPool;
 
     public ThreadServiceBean4() {
         try { Thread.sleep(1000); } catch (InterruptedException e) { }
@@ -45,7 +45,7 @@ public class ThreadServiceBean4 {
 //        futureFun3.get();
 //        executor.shutdown();
 
-        executorUtil.executorSubmit(taskFun(1, db), taskFun(2, db), taskFun(3, db));
+        newFixedThreadPool.submit(taskFun(1, db), taskFun(2, db), taskFun(3, db));
         System.out.println(db);
     }
 

@@ -1,6 +1,6 @@
 package com.codenotfound.thread;
 
-import com.codenotfound.config.ExecutorUtil;
+import com.codenotfound.util.ExecutorServiceUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +31,8 @@ public class ThreadServiceBean4Test {
 //    private ExecutorService executor;
 
     @Autowired
-    @Qualifier("fixedThreadPoolUtil")
-    private ExecutorUtil executorUtil;
+    @Qualifier("newFixedThreadPool")
+    private ExecutorServiceUtil newFixedThreadPool;
 
     @Test
     public void testFunThreads() throws InterruptedException, ExecutionException {
@@ -50,7 +50,7 @@ public class ThreadServiceBean4Test {
 //        futureServiceBean3.get();
 //        executor.shutdown();
 
-        executorUtil.executorSubmit(taskRun(), taskRun(), taskRun());
+        newFixedThreadPool.submit(taskRun(), taskRun(), taskRun());
         System.out.println("   <<<<<<<<<<<< " + LocalDateTime.now().format(DF)); //TODO  01:54:32.047 | 01:58:36.517
 
 //        executor.shutdown();
