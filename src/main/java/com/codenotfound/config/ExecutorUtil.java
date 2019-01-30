@@ -1,8 +1,4 @@
-package com.codenotfound.util;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
+package com.codenotfound.config;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,12 +6,13 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
 
-@Component
 public class ExecutorUtil {
 
-    @Autowired
-    @Qualifier("fixedThreadPool")
-    private ExecutorService executor; //TODO  + very fast time  + not 'java.lang.NullPointerException'
+    private final ExecutorService executor;
+
+    public ExecutorUtil(ExecutorService executor) {
+        this.executor = executor;
+    }
 
     public void executorSubmit(Runnable... tasks) throws ExecutionException, InterruptedException {
         List<Future<?>> submits = new ArrayList<>();

@@ -17,6 +17,12 @@ public class ExecutorServiceConfig {
         return Executors.newFixedThreadPool(10);
     }
 
+    @Bean("fixedThreadPoolUtil")
+    @Scope(value = "prototype", proxyMode = ScopedProxyMode.TARGET_CLASS) //TODO:  выиграш в скорости на 3-секунды
+    public ExecutorUtil executorUtil() {
+        return new ExecutorUtil(Executors.newFixedThreadPool(10));
+    }
+
     @Bean("singleThreaded")
     public ExecutorService singleThreadedExecutor() {
         return Executors.newSingleThreadExecutor();

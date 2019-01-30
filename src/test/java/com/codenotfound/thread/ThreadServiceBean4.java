@@ -1,6 +1,6 @@
 package com.codenotfound.thread;
 
-import com.codenotfound.util.ExecutorUtil;
+import com.codenotfound.config.ExecutorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
@@ -8,8 +8,6 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -23,6 +21,7 @@ public class ThreadServiceBean4 {
 //    private ExecutorService executor; //TODO  + very fast time  + not 'java.lang.NullPointerException'
 
     @Autowired
+    @Qualifier("fixedThreadPoolUtil")
     private ExecutorUtil executorUtil;
 
     public ThreadServiceBean4() {

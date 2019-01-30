@@ -1,6 +1,6 @@
 package com.codenotfound.thread;
 
-import com.codenotfound.util.ExecutorUtil;
+import com.codenotfound.config.ExecutorUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,7 @@ public class ThreadServiceBean4Test {
 //    private ExecutorService executor;
 
     @Autowired
+    @Qualifier("fixedThreadPoolUtil")
     private ExecutorUtil executorUtil;
 
     @Test
