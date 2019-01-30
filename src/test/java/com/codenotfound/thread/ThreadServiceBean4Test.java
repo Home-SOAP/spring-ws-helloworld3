@@ -12,6 +12,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.concurrent.*;
 
+/**
+ * @see https://www.concretepage.com/java/jdk-8/java-8-runnable-and-callable-lambda-example-with-argument
+ *      https://www.journaldev.com/1663/java-generics-example-method-class-interface
+ */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.DEFINED_PORT)
 public class ThreadServiceBean4Test {
