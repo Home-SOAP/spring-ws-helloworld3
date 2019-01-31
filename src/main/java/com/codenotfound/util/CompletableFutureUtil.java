@@ -7,7 +7,7 @@ public class CompletableFutureUtil {
 
     private CompletableFuture<?> future;
 
-    public void thenCombine(CompletableFuture<?> future, CompletableFuture<?>... futures) {
+    public synchronized void thenCombine(CompletableFuture<?> future, CompletableFuture<?>... futures) {
         for (CompletableFuture<?> a : futures) future = future.thenCombine(a, (b,c) -> null);
         this.future = (this.future!=null) ? this.future.thenCombine(future, (b,c) -> null) : future;
     }
@@ -15,7 +15,7 @@ public class CompletableFutureUtil {
 //    public Object get() throws ExecutionException, InterruptedException {
 //        return (future!=null) ? future.get() : null;
 //    }
-    public Object get() throws ExecutionException, InterruptedException {
+    public synchronized Object get() throws ExecutionException, InterruptedException {
         if (future!=null) {
             Object get = future.get();
             future = null;
@@ -24,7 +24,7 @@ public class CompletableFutureUtil {
         return null;
     }
 
-    public Object get(CompletableFuture<?> future, CompletableFuture<?>... futures) throws ExecutionException, InterruptedException {
+    public synchronized Object get(CompletableFuture<?> future, CompletableFuture<?>... futures) throws ExecutionException, InterruptedException {
         for (CompletableFuture<?> a : futures) future = future.thenCombine(a, (b,c) -> null);
         return future.get();
     }
