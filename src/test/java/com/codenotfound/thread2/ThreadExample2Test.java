@@ -66,23 +66,24 @@ public class ThreadExample2Test {
 
     @Test
     public void testFutureFun() throws InterruptedException, ExecutionException {
-        Db db = new Db();
-
         System.out.println("   >>>>>>>>>>>> " + LocalDateTime.now().format(ThreadExample2.DF));
 
+        Db db = new Db();
         CompletableFuture<?> futureFun1 = futureFun(3, db);
         CompletableFuture<?> futureFun2 = futureFun(2, db);
         CompletableFuture<?> futureFun3 = futureFun(1, db);
-        completableFutureUtil.get(futureFun1, futureFun2, futureFun3);
-//        completableFutureUtil.thenCombine(futureFun1, futureFun2, futureFun3);
+//        completableFutureUtil.get(futureFun1, futureFun2, futureFun3);
+        completableFutureUtil.thenCombine(futureFun1, futureFun2, futureFun3);
 //        completableFutureUtil.get();
 
-//        CompletableFuture<?> futureFun1 = futureFun(1, db);
-//        CompletableFuture<?> futureFun2 = futureFun(1, db);
-//        CompletableFuture<?> futureFun3 = futureFun(1, db);
-//        completableFutureUtil.thenCombine(futureFun1, futureFun2, futureFun3);
-//        completableFutureUtil.get();
-//
+//        db = new Db();
+        futureFun1 = futureFun(1, db);
+        futureFun2 = futureFun(1, db);
+        futureFun3 = futureFun(1, db);
+        completableFutureUtil.thenCombine(futureFun1, futureFun2, futureFun3);
+        completableFutureUtil.get();
+
+//        db = new Db();
 //        futureFun1 = futureFun(2, db);
 //        futureFun2 = futureFun(2, db);
 //        futureFun3 = futureFun(3, db);

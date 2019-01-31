@@ -12,8 +12,16 @@ public class CompletableFutureUtil {
         this.future = (this.future!=null) ? this.future.thenCombine(future, (b,c) -> null) : future;
     }
 
+//    public Object get() throws ExecutionException, InterruptedException {
+//        return (future!=null) ? future.get() : null;
+//    }
     public Object get() throws ExecutionException, InterruptedException {
-        return (future!=null) ? future.get() : null;
+        if (future!=null) {
+            Object get = future.get();
+            future = null;
+            return get;
+        }
+        return null;
     }
 
     public Object get(CompletableFuture<?> future, CompletableFuture<?>... futures) throws ExecutionException, InterruptedException {
