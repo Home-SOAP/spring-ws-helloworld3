@@ -13,7 +13,7 @@ public class CompletableFutureUtil {
     }
 
     public Object get() throws ExecutionException, InterruptedException {
-        return future.get();
+        return (future!=null) ? future.get() : null;
     }
 
     public Object get(CompletableFuture<?> future, CompletableFuture<?>... futures) throws ExecutionException, InterruptedException {
