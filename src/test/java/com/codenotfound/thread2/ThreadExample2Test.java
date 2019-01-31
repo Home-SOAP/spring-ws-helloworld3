@@ -21,6 +21,12 @@ import java.util.concurrent.ExecutionException;
  *      https://dzone.com/articles/getting-the-most-out-of-the-java-thread-pool
  * @see https://vertex-academy.com/tutorials/ru/java-8-uchebnik
  *      https://gist.github.com/sanaulla123/3029344
+ *
+ * synchronized vs ReentrantLock
+ * @see http://www.javaspecialist.ru/2011/11/synchronized-vs-reentrantlock.html
+ *      https://www.ibm.com/developerworks/java/library/j-jtp10264/index.html
+ *      ( https://stackoverflow.com/questions/11600520/synchronized-vs-reentrantlock-on-performance )
+ *
  */
 
 @RunWith(SpringRunner.class)
