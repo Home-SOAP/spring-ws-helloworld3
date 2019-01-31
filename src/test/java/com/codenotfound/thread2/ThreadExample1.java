@@ -51,25 +51,7 @@ public class ThreadExample1 {
 
     Runnable taskFun(int number, Db db) {
         return () -> {
-            Fun fun = new Fun();
-            fun.fun(number, db);
+            new Fun().fun(number, db);
         };
-    }
-}
-
-class Fun {
-    void fun(int number, Db db) {
-//        Object lock = new Object();
-//        synchronized (lock) {
-        synchronized (this) {
-//        synchronized (db) {
-            try { Thread.sleep(3000); } catch (InterruptedException e) {}
-
-            if (number==1) db.setDate1(LocalDateTime.now());
-            if (number==2) db.setDate2(LocalDateTime.now());
-            if (number==3) db.setDate3(LocalDateTime.now());
-
-            System.out.println(number + ". " + LocalDateTime.now().format(ThreadExample1.DF));
-        }
     }
 }

@@ -64,10 +64,45 @@ public class ThreadExample2Test {
         System.out.println("   <<<<<<<<<<<< " + LocalDateTime.now().format(ThreadExample2.DF)); //TODO:  04:48:00.643
     }
 
+    @Test
+    public void testFutureFun() throws InterruptedException, ExecutionException {
+        Db db = new Db();
+
+        System.out.println("   >>>>>>>>>>>> " + LocalDateTime.now().format(ThreadExample2.DF));
+
+        CompletableFuture<?> futureFun1 = futureFun(3, db);
+        CompletableFuture<?> futureFun2 = futureFun(2, db);
+        CompletableFuture<?> futureFun3 = futureFun(1, db);
+        completableFutureUtil.get(futureFun1, futureFun2, futureFun3);
+//        completableFutureUtil.thenCombine(futureFun1, futureFun2, futureFun3);
+//        completableFutureUtil.get();
+
+//        CompletableFuture<?> futureFun1 = futureFun(1, db);
+//        CompletableFuture<?> futureFun2 = futureFun(1, db);
+//        CompletableFuture<?> futureFun3 = futureFun(1, db);
+//        completableFutureUtil.thenCombine(futureFun1, futureFun2, futureFun3);
+//        completableFutureUtil.get();
+//
+//        futureFun1 = futureFun(2, db);
+//        futureFun2 = futureFun(2, db);
+//        futureFun3 = futureFun(3, db);
+//        completableFutureUtil.get(futureFun1, futureFun2, futureFun3);
+
+        System.out.println("   <<<<<<<<<<<< " + LocalDateTime.now().format(ThreadExample2.DF));
+        System.out.println(db);
+    }
+
     CompletableFuture<?> future(int number) {
         return CompletableFuture.supplyAsync(() -> {
             try { Thread.sleep(number * 1000); } catch (InterruptedException e) {}
             System.out.println(number + ". " + LocalDateTime.now().format(ThreadExample1.DF));
+            return null;
+        });
+    }
+
+    CompletableFuture<?> futureFun(int number, Db db) {
+        return CompletableFuture.supplyAsync(() -> {
+            new Fun().fun(number, db);
             return null;
         });
     }
