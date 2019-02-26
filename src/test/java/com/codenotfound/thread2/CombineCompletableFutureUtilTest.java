@@ -52,11 +52,11 @@ public class CombineCompletableFutureUtilTest {
     public void testTryGetCompletableFuture() throws InterruptedException, ExecutionException {
         CompletableFuture<?> futureOne = futureOne(10);  //TODO:  #1
         CompletableFuture<?> futureTwo = futureTwo(20);  //TODO:  #2
-        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree2()));
+        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree1()));
 
         futureOne = futureOne(10);  //TODO:  #1
         futureTwo = futureTwo(0);   //TODO:  #2
-        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree2()));
+        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree1()));
     }
 
     private CompletableFuture<?> futureOne(int param) {
@@ -77,7 +77,7 @@ public class CombineCompletableFutureUtilTest {
         };
     }
 
-    private CombineCompletableFuture futureThree2() {
+    private CombineCompletableFuture futureThree1() {
         return (Object a, Object b) -> {
             Integer aInteger = (Integer) a;
             Integer bInteger = (Integer) b;
