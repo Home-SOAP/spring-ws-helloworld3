@@ -57,9 +57,9 @@ public class CombineCompletableFutureUtilTest {
         futureOne = futureOne(10);  //TODO:  #1
         futureTwo = futureTwo(0);   //TODO:  #2
         System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree1()));
-        futureOne = futureOne(10);  //TODO:  #1
-        futureTwo = futureTwo(0);   //TODO:  #2
-        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree11()));
+//        futureOne = futureOne(10);  //TODO:  #1
+//        futureTwo = futureTwo(0);   //TODO:  #2
+//        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree11()));  //TODO:  java.lang.ArithmeticException: ERROR
 
         futureOne = futureOne2(true);  //TODO:  #1
         futureTwo = futureTwo2(true);  //TODO:  #2
@@ -67,6 +67,14 @@ public class CombineCompletableFutureUtilTest {
         futureOne = futureOne2(true);  //TODO:  #1
         futureTwo = futureTwo2(false); //TODO:  #2
         System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree2()));
+    }
+
+    @Test
+    public void testGetCompletableFuture2() throws InterruptedException, ExecutionException {
+        CompletableFuture<?> futureOne = futureOne3(true); //TODO:  #1
+        CompletableFuture<?> futureTwo = futureTwo3(true); //TODO:  #2
+
+        System.out.println("               get >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree3()));
     }
 
     private CompletableFuture<?> futureOne(int param) {
@@ -137,6 +145,28 @@ public class CombineCompletableFutureUtilTest {
 
             //TODO:  some action
             return aBoolean && bBoolean;
+        };
+    }
+
+    private CompletableFuture<?> futureOne3(boolean param) {
+        return CompletableFuture.supplyAsync(() -> {
+            System.out.println("   One >>>>>>>>>>>>>>> " + param);
+            return null;
+        });
+    }
+
+    private CompletableFuture<?> futureTwo3(boolean param) {
+        return CompletableFuture.supplyAsync(() -> {
+            System.out.println("   Two >>>>>>>>>>>>>>> " + param);
+            return null;
+        });
+    }
+
+    private CombineCompletableFuture futureThree3() {
+        return (Object a, Object b) -> {
+            //TODO:  some action
+            System.out.println("   Three ============= ");
+            return null;
         };
     }
 }
