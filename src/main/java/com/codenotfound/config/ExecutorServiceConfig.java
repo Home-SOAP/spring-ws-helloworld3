@@ -1,5 +1,6 @@
 package com.codenotfound.config;
 
+import com.codenotfound.util.CombineCompletableFutureUtil;
 import com.codenotfound.util.CompletableFutureUtil;
 import com.codenotfound.util.ExecutorServiceUtil;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +17,11 @@ public class ExecutorServiceConfig {
     @Bean("completableFutureUtil")
     public CompletableFutureUtil completableFutureUtil() {
         return new CompletableFutureUtil();
+    }
+
+    @Bean("combineCompletableFutureUtil")
+    public CombineCompletableFutureUtil combineCompletableFutureUtil() {
+        return new CombineCompletableFutureUtil();
     }
 
     @Bean("newFixedThreadPool") //TODO:   (11:02:35.085 - 11:02:43.127)
