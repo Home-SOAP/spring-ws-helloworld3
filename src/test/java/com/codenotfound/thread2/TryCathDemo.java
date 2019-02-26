@@ -8,6 +8,9 @@ public class TryCathDemo {
 
         System.out.println( "   2 >>>>>>>>>>>>>>>> " + func2(1) );
         System.out.println( "   2 >>>>>>>>>>>>>>>> " + func2(0) );
+
+        System.out.println( "   3 >>>>>>>>>>>>>>>> " + func3(1) );
+        System.out.println( "   3 >>>>>>>>>>>>>>>> " + func3(0) );
     }
 
     static boolean func1(int param) {
@@ -27,5 +30,14 @@ public class TryCathDemo {
 
         }
         return false;
+    }
+
+    static boolean func3(int param) {
+        try {
+            int result = 1 / param;
+        } catch (ArithmeticException ex) {
+            return false;
+        }
+        return true;
     }
 }
