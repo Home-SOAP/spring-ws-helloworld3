@@ -19,6 +19,17 @@ import java.util.concurrent.ExecutionException;
  *      https://annimon.com/article/3462
  * @see https://kurspc.com.ua/node/424
  * @see https://stackoverflow.com/questions/22588518/lambda-expression-and-generic-method
+ *
+ * Руководство по CompletableFuture
+ * https://www.codeflow.site/ru/article/java-completablefuture
+ *
+ * ***
+ * CompletableFuture.allOf
+ * http://qaru.site/questions/16237790/how-to-combine-multiple-completionstage-responses-of-type-listfor-me-or-some-other-in-java
+ * https://github.com/te21wals/CompletableFuturesDemo/blob/master/src/main/java/Main.java
+ *
+ * Thread'ом Java не испортишь: Часть IV - Callable, Future и друзья
+ * https://javarush.ru/groups/posts/2065-threadom-java-ne-isportishjh--chastjh-iv---callable-future-i-druzjhja
  */
 
 @RunWith(SpringRunner.class)
