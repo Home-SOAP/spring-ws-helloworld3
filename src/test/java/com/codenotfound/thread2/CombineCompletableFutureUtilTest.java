@@ -57,6 +57,9 @@ public class CombineCompletableFutureUtilTest {
         futureOne = futureOne(10);  //TODO:  #1
         futureTwo = futureTwo(0);   //TODO:  #2
         System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree1()));
+        futureOne = futureOne(10);  //TODO:  #1
+        futureTwo = futureTwo(0);   //TODO:  #2
+        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree11()));
 
         futureOne = futureOne2(true);  //TODO:  #1
         futureTwo = futureTwo2(true);  //TODO:  #2
@@ -95,6 +98,21 @@ public class CombineCompletableFutureUtilTest {
                 return true;
             } catch (ArithmeticException ex) {
                 return false;
+            }
+        };
+    }
+
+    private CombineCompletableFuture futureThree11() {
+        return (Object a, Object b) -> {
+            Integer aInteger = (Integer) a;
+            Integer bInteger = (Integer) b;
+
+            //TODO:  some action
+            try {
+                int result = aInteger / bInteger;
+                return true;
+            } catch (ArithmeticException ex) {
+                throw new ArithmeticException("ERROR");
             }
         };
     }
