@@ -31,8 +31,8 @@ public class CombineCompletableFutureUtilTest {
 
     @Test
     public void testGetCombineCompletableFuture() throws InterruptedException, ExecutionException {
-        CompletableFuture<Integer> futureOne = futureOne(10); //TODO:  #1
-        CompletableFuture<Integer> futureTwo = futureTwo(20); //TODO:  #2
+        CompletableFuture<?> futureOne = futureOne(10); //TODO:  #1
+        CompletableFuture<?> futureTwo = futureTwo(20); //TODO:  #2
         CombineCompletableFuture futureThree = futureThree();  //TODO:  #3
 
         CompletableFuture<?> thenCombine = combineCompletableFutureUtil.thenCombine(futureOne, futureTwo, futureThree);
@@ -41,18 +41,18 @@ public class CombineCompletableFutureUtilTest {
 
     @Test
     public void testGetCompletableFuture() throws InterruptedException, ExecutionException {
-        CompletableFuture<Integer> futureOne = futureOne(10); //TODO:  #1
-        CompletableFuture<Integer> futureTwo = futureTwo(20); //TODO:  #2
+        CompletableFuture<?> futureOne = futureOne(10); //TODO:  #1
+        CompletableFuture<?> futureTwo = futureTwo(20); //TODO:  #2
         CombineCompletableFuture futureThree = futureThree();        //TODO:  #3
 
         System.out.println("               get >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree));
     }
 
-    private CompletableFuture<Integer> futureOne(int param) {
+    private CompletableFuture<?> futureOne(int param) {
         return CompletableFuture.supplyAsync(() -> param);
     }
 
-    private CompletableFuture<Integer> futureTwo(int param) {
+    private CompletableFuture<?> futureTwo(int param) {
         return CompletableFuture.supplyAsync(() -> param);
     }
 
