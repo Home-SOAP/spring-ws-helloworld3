@@ -43,9 +43,20 @@ public class CombineCompletableFutureUtilTest {
     public void testGetCompletableFuture() throws InterruptedException, ExecutionException {
         CompletableFuture<?> futureOne = futureOne(10); //TODO:  #1
         CompletableFuture<?> futureTwo = futureTwo(20); //TODO:  #2
-        CombineCompletableFuture futureThree = futureThree();        //TODO:  #3
+        CombineCompletableFuture futureThree = futureThree();  //TODO:  #3
 
         System.out.println("               get >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree));
+    }
+
+    @Test
+    public void testTryGetCompletableFuture() throws InterruptedException, ExecutionException {
+        CompletableFuture<?> futureOne = futureOne(10);  //TODO:  #1
+        CompletableFuture<?> futureTwo = futureTwo(20);  //TODO:  #2
+        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree2()));
+
+        futureOne = futureOne(10);  //TODO:  #1
+        futureTwo = futureTwo(0);   //TODO:  #2
+        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree2()));
     }
 
     private CompletableFuture<?> futureOne(int param) {
@@ -60,8 +71,24 @@ public class CombineCompletableFutureUtilTest {
         return (Object a, Object b) -> {
             Integer aInteger = (Integer) a;
             Integer bInteger = (Integer) b;
+
             //TODO:  some action
             return aInteger + bInteger;
+        };
+    }
+
+    private CombineCompletableFuture futureThree2() {
+        return (Object a, Object b) -> {
+            Integer aInteger = (Integer) a;
+            Integer bInteger = (Integer) b;
+
+            //TODO:  some action
+            try {
+                int result = aInteger / bInteger;
+                return true;
+            } catch (ArithmeticException ex) {
+                return false;
+            }
         };
     }
 }
