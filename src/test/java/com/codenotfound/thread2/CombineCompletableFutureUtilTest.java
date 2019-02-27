@@ -44,9 +44,9 @@ public class CombineCompletableFutureUtilTest {
     public void testGetCombineCompletableFuture() throws InterruptedException, ExecutionException {
         CompletableFuture<?> futureOne = futureOne(10); //TODO:  #1
         CompletableFuture<?> futureTwo = futureTwo(20); //TODO:  #2
-        CombineCompletableFuture futureThree = futureThree();  //TODO:  #3
+        CombineCompletableFuture futureCombine = futureCombine();  //TODO:  #3
 
-        CompletableFuture<?> thenCombine = combineCompletableFutureUtil.thenCombine(futureOne, futureTwo, futureThree);
+        CompletableFuture<?> thenCombine = combineCompletableFutureUtil.thenCombine(futureOne, futureTwo, futureCombine);
         System.out.println("   thenCombine.get >>>>>>>>>>>> " + thenCombine.get());
     }
 
@@ -54,30 +54,30 @@ public class CombineCompletableFutureUtilTest {
     public void testGetCompletableFuture() throws InterruptedException, ExecutionException {
         CompletableFuture<?> futureOne = futureOne(10); //TODO:  #1
         CompletableFuture<?> futureTwo = futureTwo(20); //TODO:  #2
-        CombineCompletableFuture futureThree = futureThree();  //TODO:  #3
+        CombineCompletableFuture futureCombine = futureCombine();  //TODO:  #3
 
-        System.out.println("               get >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree));
+        System.out.println("               get >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureCombine));
     }
 
     @Test
     public void testTryGetCompletableFuture() throws InterruptedException, ExecutionException {
         CompletableFuture<?> futureOne = futureOne(10);  //TODO:  #1
         CompletableFuture<?> futureTwo = futureTwo(20);  //TODO:  #2
-        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree1()));
+        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureCombine1()));
 
         futureOne = futureOne(10);  //TODO:  #1
         futureTwo = futureTwo(0);   //TODO:  #2
-        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree1()));
+        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureCombine1()));
 //        futureOne = futureOne(10);  //TODO:  #1
 //        futureTwo = futureTwo(0);   //TODO:  #2
-//        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree11()));  //TODO:  java.lang.ArithmeticException: ERROR
+//        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureCombine11()));  //TODO:  java.lang.ArithmeticException: ERROR
 
         futureOne = futureOne2(true);  //TODO:  #1
         futureTwo = futureTwo2(true);  //TODO:  #2
-        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree2()));
+        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureCombine2()));
         futureOne = futureOne2(true);  //TODO:  #1
         futureTwo = futureTwo2(false); //TODO:  #2
-        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree2()));
+        System.out.println("               try >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureCombine2()));
     }
 
     @Test
@@ -85,7 +85,7 @@ public class CombineCompletableFutureUtilTest {
         CompletableFuture<?> futureOne = futureOne3(true); //TODO:  #1
         CompletableFuture<?> futureTwo = futureTwo3(true); //TODO:  #2
 
-        System.out.println("               get >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureThree3()));
+        System.out.println("               get >>>>>>>>>>>> " + combineCompletableFutureUtil.get(futureOne, futureTwo, futureCombine3()));
     }
 
     private CompletableFuture<?> futureOne(int param) {
@@ -96,7 +96,7 @@ public class CombineCompletableFutureUtilTest {
         return CompletableFuture.supplyAsync(() -> param);
     }
 
-    private CombineCompletableFuture futureThree() {
+    private CombineCompletableFuture futureCombine() {
         return (Object a, Object b) -> {
             Integer aInteger = (Integer) a;
             Integer bInteger = (Integer) b;
@@ -106,7 +106,7 @@ public class CombineCompletableFutureUtilTest {
         };
     }
 
-    private CombineCompletableFuture futureThree1() {
+    private CombineCompletableFuture futureCombine1() {
         return (Object a, Object b) -> {
             Integer aInteger = (Integer) a;
             Integer bInteger = (Integer) b;
@@ -121,7 +121,7 @@ public class CombineCompletableFutureUtilTest {
         };
     }
 
-    private CombineCompletableFuture futureThree11() {
+    private CombineCompletableFuture futureCombine11() {
         return (Object a, Object b) -> {
             Integer aInteger = (Integer) a;
             Integer bInteger = (Integer) b;
@@ -149,7 +149,7 @@ public class CombineCompletableFutureUtilTest {
         });
     }
 
-    private CombineCompletableFuture futureThree2() {
+    private CombineCompletableFuture futureCombine2() {
         return (Object a, Object b) -> {
             Boolean aBoolean = (Boolean) a;
             Boolean bBoolean = (Boolean) b;
@@ -173,7 +173,7 @@ public class CombineCompletableFutureUtilTest {
         });
     }
 
-    private CombineCompletableFuture futureThree3() {
+    private CombineCompletableFuture futureCombine3() {
         return (Object a, Object b) -> {
             //TODO:  some action
             System.out.println("   Three ============= ");

@@ -10,6 +10,6 @@ public class CombineCompletableFutureUtil {
     }
 
     public Object get(CompletableFuture<?> future1, CompletableFuture<?> future2, CombineCompletableFuture futureCombine) throws ExecutionException, InterruptedException {
-        return future1.thenCombine(future2, (a,b) -> futureCombine.get(a, b)).get();
+        return thenCombine(future1, future2, futureCombine).get();
     }
 }

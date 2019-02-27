@@ -43,16 +43,16 @@ public class CombineCompletableFutureUtil2Test {
 
     @Test
     public void testGetCompletableFuture1() throws InterruptedException, ExecutionException {
-        CombineCompletableFuture futureThree = futureThree(); //TODO:  #3
-        System.out.println("               get (1-sec. 2-sec.) >>>>>>>>>>>> A-B = " + combineCompletableFutureUtil.get(futureA(1000L, new ParamDto(20)), futureB(2000L, new ParamDto(10)), futureThree));
-        System.out.println("               get (2-sec. 1-sec.) >>>>>>>>>>>> A-B = " + combineCompletableFutureUtil.get(futureA(2000L, new ParamDto(20)), futureB(1000L, new ParamDto(10)), futureThree));
+        CombineCompletableFuture futureCombine = futureCombine(); //TODO:  #3
+        System.out.println("               get (1-sec. 2-sec.) >>>>>>>>>>>> A-B = " + combineCompletableFutureUtil.get(futureA(1000L, new ParamDto(20)), futureB(2000L, new ParamDto(10)), futureCombine));
+        System.out.println("               get (2-sec. 1-sec.) >>>>>>>>>>>> A-B = " + combineCompletableFutureUtil.get(futureA(2000L, new ParamDto(20)), futureB(1000L, new ParamDto(10)), futureCombine));
     }
 
     @Test
     public void testGetCompletableFuture2() throws InterruptedException, ExecutionException {
-        System.out.println("               get (1-sec. 2-sec.) >>>>>>>>>>>>   A:  " + combineCompletableFutureUtil.get(futureA(1000L, new ParamDto(10)), futureB(2000L, new ParamDto(null)), futureThreeA()));
-        System.out.println("               get (1-sec. 2-sec.) >>>>>>>>>>>>   B:  " + combineCompletableFutureUtil.get(futureA(1000L, new ParamDto(null)), futureB(2000L, new ParamDto(20)), futureThreeB()));
-        System.out.println("        get (B=null 1-sec. 2-sec.) >>>>>>>>>>>>   B:  " + combineCompletableFutureUtil.get(futureA(1000L, new ParamDto(null)), futureB(2000L, new ParamDto(null)), futureThreeB()));
+        System.out.println("               get (1-sec. 2-sec.) >>>>>>>>>>>>   A:  " + combineCompletableFutureUtil.get(futureA(1000L, new ParamDto(10)), futureB(2000L, new ParamDto(null)), futureCombineA()));
+        System.out.println("               get (1-sec. 2-sec.) >>>>>>>>>>>>   B:  " + combineCompletableFutureUtil.get(futureA(1000L, new ParamDto(null)), futureB(2000L, new ParamDto(20)), futureCombineB()));
+        System.out.println("        get (B=null 1-sec. 2-sec.) >>>>>>>>>>>>   B:  " + combineCompletableFutureUtil.get(futureA(1000L, new ParamDto(null)), futureB(2000L, new ParamDto(null)), futureCombineB()));
     }
 
     private CompletableFuture<?> futureA(Long millis, ParamDto paramDto) {
@@ -69,7 +69,7 @@ public class CombineCompletableFutureUtil2Test {
         });
     }
 
-    private CombineCompletableFuture futureThree() {
+    private CombineCompletableFuture futureCombine() {
         return (Object a, Object b) -> {
             ParamDto aParamDto = (ParamDto) a;
             ParamDto bParamDto = (ParamDto) b;
@@ -79,7 +79,7 @@ public class CombineCompletableFutureUtil2Test {
         };
     }
 
-    private CombineCompletableFuture futureThreeA() {
+    private CombineCompletableFuture futureCombineA() {
         return (Object a, Object b) -> {
             ParamDto aParamDto = (ParamDto) a;
 
@@ -88,7 +88,7 @@ public class CombineCompletableFutureUtil2Test {
         };
     }
 
-    private CombineCompletableFuture futureThreeB() {
+    private CombineCompletableFuture futureCombineB() {
         return (Object a, Object b) -> {
             ParamDto bParamDto = (ParamDto) b;
 
